@@ -1,0 +1,44 @@
+{
+  "name" : "cdc testing",
+  "jobMode" : "SCRIPT",
+  "description" : "",
+  "role" : "arn:aws:iam::017820705928:role/Glues3access",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 5
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-017820705928-ap-south-1/scripts/cdc testing.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-glue-datacatalog" : "true",
+    "--input_path" : "s3://lux-test-raw/cdc_testing-7.csv",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--TempDir" : "s3://aws-glue-assets-017820705928-ap-south-1/temporary/",
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-017820705928-ap-south-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "false",
+    "--enable-observability-metrics" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-language" : "python",
+    "--load_type" : "CDC LOAD",
+    "--enable-auto-scaling" : "true",
+    "--output_path" : "s3://lux-test-process/cdctest/SAPABAP1.testing/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 2880,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "4.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "glue_testing",
+    "branch" : "main",
+    "folder" : "cdc testing"
+  }
+}
