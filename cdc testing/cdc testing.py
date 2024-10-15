@@ -66,8 +66,8 @@ if load_type.upper() == "FULL LOAD":
 elif load_type.upper() == "CDC LOAD":
     print(f"Executing CDC Load for input {input_path}")
     cdc_load()
-# else:
-#     raise ValueError(f"Invalid load_type: {load_type}. Must be either 'FULL LOAD' or 'CDC LOAD'.")
+else:
+    raise ValueError(f"Invalid load_type: {load_type}. Must be either 'FULL LOAD' or 'CDC LOAD'.")
 
 # Update the job bookmark
 job.commit()
